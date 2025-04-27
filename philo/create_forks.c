@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   create_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaara <kaara@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/27 18:07:57 by kaara             #+#    #+#             */
-/*   Updated: 2025/04/27 18:15:10 by kaara            ###   ########.fr       */
+/*   Created: 2025/04/27 18:30:58 by kaara             #+#    #+#             */
+/*   Updated: 2025/04/27 18:44:12 by kaara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
+#include <pthread.h>
 
-typedef struct s_philo	t_philo;
-
-struct s_philo
+pthread_mutex_t create_forks(t_philo *philo_data)
 {
-	int	number_of_philosophers;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	number_of_times_each_philosopher_must_eat;
-};
-
-long	ft_atoi(const char *str);
-t_philo	get_philo_data(int argc, char **argv);
-void    spawn_thread(t_philo	*philo_deta);
-
-#endif
+    forks = (pthread_mutex_ *)
+                malloc(pthread_mutex * philo_data->number_of_philosophers);
+    return (forks);
+}

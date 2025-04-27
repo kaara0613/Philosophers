@@ -1,35 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_philo_data.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaara <kaara@student.42.jp>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/27 18:09:40 by kaara             #+#    #+#             */
+/*   Updated: 2025/04/27 18:34:54 by kaara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 #include <limits.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
-t_philo get_philo_data(int argc, char **argv)
+t_philo	get_philo_data(int argc, char **argv)
 {
-    long    tmp;
-    t_philo *philo;
+	long	tmp;
+	t_philo	*philo;
 
-    philo = (t_philo *)malloc(sizeof(t_philo));
-    if (philo == NULL)
-    {
-        printf("allocation filed.\n")
-        return (NULL);
-    }
-	int	number_of_philosophers;
-    if(!atoi_wrap(argv[0], philo->number_of_philosophers))
-    {
-        printf("argumennt is overflow.\n")
-        return (NULL);
-    }
-    return (philo);
+	philo = (t_philo *)malloc(sizeof(t_philo));
+	if (philo == NULL)
+	{
+		printf("allocation filed.\n")
+		return (NULL);
+	}
+	if (!atoi_wrap(argv[0], philo->number_of_philosophers))
+		return (NULL);
+	if (!atoi_wrap(argv[0], philo->time_to_die))
+		return (NULL);
+	if (!atoi_wrap(argv[0], philo->time_to_eat))
+		return (NULL);
+	if (!atoi_wrap(argv[0], philo->time_to_sleep))
+		return (NULL);
+	if (!atoi_wrap(argv[0], philo->number_of_times_each_philosopher_must_eat))
+		return (NULL);
+	return (philo);
 }
 
-static bool atoi_wrap(char *input, int *result)
+static bool	atoi_wrap(char *input, int *result)
 {
-    long tmp;
+	long	tmp;
 
-    tmp = ft_atoi(input);
-    if (tmp < INT_MIN || tmp > INT_MAX)
-        return (false);
-    result = tmp;
-    return (true);
+	tmp = ft_atoi(input);
+	if (tmp < INT_MIN || tmp > INT_MAX)
+	{
+		printf("argumennt is overflow.\n");
+		return (false);
+	}
+	result = tmp;
+	return (true);
 }
