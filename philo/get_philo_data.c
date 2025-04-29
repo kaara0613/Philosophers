@@ -6,7 +6,7 @@
 /*   By: kaara <kaara@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:09:40 by kaara             #+#    #+#             */
-/*   Updated: 2025/04/27 18:34:54 by kaara            ###   ########.fr       */
+/*   Updated: 2025/04/29 14:04:05 by kaara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ t_philo	get_philo_data(int argc, char **argv)
 		printf("allocation filed.\n")
 		return (NULL);
 	}
-	if (!atoi_wrap(argv[0], philo->number_of_philosophers))
+	if (!atoi_wrap(argv[1], philo->number_of_philosophers))
 		return (NULL);
-	if (!atoi_wrap(argv[0], philo->time_to_die))
+	if (!atoi_wrap(argv[2], philo->time_to_die))
 		return (NULL);
-	if (!atoi_wrap(argv[0], philo->time_to_eat))
+	if (!atoi_wrap(argv[3], philo->time_to_eat))
 		return (NULL);
-	if (!atoi_wrap(argv[0], philo->time_to_sleep))
+	if (!atoi_wrap(argv[4], philo->time_to_sleep))
 		return (NULL);
-	if (!atoi_wrap(argv[0], philo->number_of_times_each_philosopher_must_eat))
+	if (argc == 5
+		&& !atoi_wrap(argv[5],
+			philo->number_of_times_each_philosopher_must_eat))
 		return (NULL);
 	return (philo);
 }
